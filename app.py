@@ -33,6 +33,8 @@ if response.status_code == 200:
         chatData = chatHistoryResponse.json()
         
         folder_path = 'chats'
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
         
         file_path = os.path.join(folder_path, f"{chatData["title"]}.json")
         with open(file_path, 'w') as json_file:
